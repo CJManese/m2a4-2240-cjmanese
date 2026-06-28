@@ -20,6 +20,16 @@
 import { useState } from 'react'
 
 export default function LiftedSearch() {
-  // TODO: keep the query in state, then return the controlled input and the <p>.
-  return null
+  const [query, setQuery] = useState('')
+
+  return (
+    <div>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+
+      <p>You searched for: {query}</p>
+    </div>
+  )
 }
