@@ -23,6 +23,44 @@
 import { useState } from 'react'
 
 export default function SignupForm() {
-  // TODO: build the controlled form described above.
-  return null
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [message, setMessage] = useState('')
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    if (!email.includes('@')) {
+      setMessage('Invalid email')
+      return
+    }
+
+    if (password.length < 6) {
+      setMessage('Password too short')
+      return
+    }
+
+    setMessage('Account created')
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button type="submit">Sign up</button>
+
+      {message && <p>{message}</p>}
+    </form>
+  )
 }
