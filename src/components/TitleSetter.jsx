@@ -19,6 +19,11 @@
 import { useEffect } from 'react'
 
 export default function TitleSetter({ text }) {
-  // TODO: add the effect that sets document.title, then return the <p>.
-  return null
+  useEffect(() => {
+    document.title = text
+  }, [text])
+
+  return (
+    <p>Current title: {text}</p>
+  )
 }
